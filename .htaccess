@@ -1,0 +1,14 @@
+RewriteEngine On 
+
+# URL amigales
+RewriteCond %{REQUEST-FILENAME} !-d
+RewriteCond %{REQUEST-FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# evitar acceder a carpetas que no tengan un index.php/index.php
+Options All -Indexes
+# Manejo de excepciones en el servidor 404
+ErrorDocument 400 /rutas/unauthorizes.php
+ErrorDocument 401 /rutas/unauthorizes.php
+ErrorDocument 403 /rutas/unauthorizes.php
+ErrorDocument 404 /rutas/404.php
